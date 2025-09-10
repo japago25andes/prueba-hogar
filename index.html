@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educación Virtual - Aprende desde casa</title>
+    <title>Administración Pública - Portal de Información</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f4f4f4;
@@ -21,15 +21,15 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
         header {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
-            text-align: center;
             padding: 2rem 0;
-            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         header h1 {
@@ -42,75 +42,155 @@
             opacity: 0.9;
         }
 
-        .content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #2c3e50;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        .hero {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
             margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        h2 {
+        .hero h2 {
             color: #2c3e50;
+            font-size: 2rem;
             margin-bottom: 1rem;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 0.5rem;
         }
 
-        .benefits {
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .services {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
 
-        .benefit-card {
-            background-color: #ecf0f1;
-            padding: 1.5rem;
-            border-radius: 6px;
-            text-align: center;
-        }
-
-        .benefit-card h3 {
-            color: #3498db;
-            margin-bottom: 1rem;
-        }
-
-        .cta {
-            background-color: #3498db;
-            color: white;
-            text-align: center;
+        .service-card {
+            background: white;
             padding: 2rem;
-            border-radius: 8px;
-            margin-top: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        .cta h2 {
-            color: white;
-            border: none;
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #666;
             margin-bottom: 1rem;
         }
 
         .btn {
             display: inline-block;
-            background-color: #2c3e50;
+            background: #3498db;
             color: white;
-            padding: 12px 30px;
+            padding: 0.7rem 1.5rem;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
+            transition: background 0.3s ease;
         }
 
         .btn:hover {
-            background-color: #34495e;
+            background: #2980b9;
+        }
+
+        .info-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .info-section h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-section ul {
+            padding-left: 2rem;
+        }
+
+        .info-section li {
+            margin-bottom: 0.5rem;
+            color: #666;
         }
 
         footer {
+            background: #2c3e50;
+            color: white;
             text-align: center;
             padding: 2rem 0;
-            color: #7f8c8d;
-            margin-top: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            background: #ecf0f1;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .contact-info h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: #555;
         }
 
         @media (max-width: 768px) {
@@ -118,12 +198,13 @@
                 font-size: 2rem;
             }
             
-            .container {
-                padding: 10px;
+            nav ul {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .content {
-                padding: 1rem;
+            nav li {
+                margin: 0.5rem 0;
             }
         }
     </style>
@@ -131,71 +212,154 @@
 <body>
     <header>
         <div class="container">
-            <h1>🎓 Educación Virtual</h1>
-            <p>El futuro del aprendizaje está aquí</p>
+            <h1>Administración Pública</h1>
+            <p>Portal de Información y Servicios Gubernamentales</p>
         </div>
     </header>
 
-    <div class="container">
-        <div class="content">
-            <h2>¿Qué es la Educación Virtual?</h2>
-            <p>La educación virtual es una modalidad de enseñanza que utiliza tecnologías digitales para facilitar el proceso de aprendizaje. A través de plataformas en línea, estudiantes y profesores pueden interactuar, compartir contenido y participar en actividades educativas desde cualquier lugar del mundo.</p>
-            
-            <p>Esta forma de educación ha revolucionado la manera en que accedemos al conocimiento, eliminando barreras geográficas y temporales, y ofreciendo oportunidades de aprendizaje más flexibles y personalizadas.</p>
-        </div>
-
-        <div class="content">
-            <h2>Beneficios de la Educación Virtual</h2>
-            <div class="benefits">
-                <div class="benefit-card">
-                    <h3>🕒 Flexibilidad Horaria</h3>
-                    <p>Estudia a tu propio ritmo y en los horarios que mejor se adapten a tu estilo de vida.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>🌍 Acceso Global</h3>
-                    <p>Accede a cursos y universidades de todo el mundo sin moverte de casa.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>💰 Costo Reducido</h3>
-                    <p>Elimina gastos de transporte, materiales físicos y otros costos asociados.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>📱 Tecnología Avanzada</h3>
-                    <p>Utiliza herramientas digitales innovadoras para potenciar tu aprendizaje.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>👥 Comunidad Global</h3>
-                    <p>Conecta con estudiantes y profesionales de diferentes países y culturas.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>📊 Seguimiento Personalizado</h3>
-                    <p>Recibe retroalimentación inmediata y seguimiento detallado de tu progreso.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="content">
-            <h2>Herramientas de Educación Virtual</h2>
-            <ul style="list-style-type: none; padding-left: 0;">
-                <li style="margin-bottom: 10px;">📺 <strong>Plataformas de videoconferencia:</strong> Zoom, Google Meet, Microsoft Teams</li>
-                <li style="margin-bottom: 10px;">📚 <strong>Sistemas de gestión de aprendizaje:</strong> Moodle, Canvas, Blackboard</li>
-                <li style="margin-bottom: 10px;">🎯 <strong>Aplicaciones interactivas:</strong> Kahoot, Padlet, Mentimeter</li>
-                <li style="margin-bottom: 10px;">💻 <strong>Contenido multimedia:</strong> Videos educativos, simuladores, realidad virtual</li>
-                <li style="margin-bottom: 10px;">📝 <strong>Evaluación en línea:</strong> Formularios digitales, exámenes automatizados</li>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#tramites">Trámites</a></li>
+                <li><a href="#normativa">Normativa</a></li>
+                <li><a href="#transparencia">Transparencia</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </div>
+    </nav>
 
-        <div class="cta">
-            <h2>¡Comienza tu Aventura Educativa Virtual!</h2>
-            <p>La educación virtual te abre las puertas a un mundo de oportunidades. No esperes más para transformar tu manera de aprender.</p>
-            <a href="#" class="btn">Explorar Cursos</a>
+    <main>
+        <div class="container">
+            <section id="inicio" class="hero">
+                <h2>Bienvenido al Portal de Administración Pública</h2>
+                <p>Facilitamos el acceso a servicios gubernamentales, información transparente y trámites eficientes para todos los ciudadanos.</p>
+            </section>
+
+            <section id="servicios" class="services">
+                <div class="service-card">
+                    <h3>🏛️ Servicios Ciudadanos</h3>
+                    <p>Accede a los principales servicios que ofrece la administración pública de manera rápida y eficiente.</p>
+                    <a href="#" class="btn">Ver Servicios</a>
+                </div>
+
+                <div class="service-card">
+                    <h3>📋 Trámites en Línea</h3>
+                    <p>Realiza tus trámites desde casa, ahorrando tiempo y evitando filas innecesarias.</p>
+                    <a href="#" class="btn">Iniciar Trámite</a>
+                </div>
+
+                <div class="service-card">
+                    <h3>📊 Transparencia</h3>
+                    <p>Consulta información sobre presupuestos, contratos públicos y rendición de cuentas.</p>
+                    <a href="#" class="btn">Ver Información</a>
+                </div>
+
+                <div class="service-card">
+                    <h3>📞 Atención Ciudadana</h3>
+                    <p>Recibe asistencia personalizada para resolver tus consultas y solicitudes.</p>
+                    <a href="#" class="btn">Contactar</a>
+                </div>
+            </section>
+
+            <section id="tramites" class="info-section">
+                <h3>Trámites Más Solicitados</h3>
+                <ul>
+                    <li>Certificados de nacimiento, matrimonio y defunción</li>
+                    <li>Licencias de construcción y permisos urbanos</li>
+                    <li>Registro de empresas y actividades comerciales</li>
+                    <li>Solicitudes de empleo público</li>
+                    <li>Permisos de circulación vehicular</li>
+                    <li>Certificados de antecedentes penales</li>
+                    <li>Solicitudes de subsidios y ayudas sociales</li>
+                </ul>
+            </section>
+
+            <section id="normativa" class="info-section">
+                <h3>Marco Normativo</h3>
+                <p>La administración pública se rige por un conjunto de leyes y reglamentos que garantizan la transparencia, eficiencia y equidad en la prestación de servicios. Principales áreas normativas:</p>
+                <ul>
+                    <li>Ley de Procedimiento Administrativo</li>
+                    <li>Código de Ética Pública</li>
+                    <li>Ley de Transparencia y Acceso a la Información</li>
+                    <li>Reglamentos de Contratación Pública</li>
+                    <li>Normativas de Atención al Ciudadano</li>
+                </ul>
+            </section>
+
+            <section id="transparencia" class="info-section">
+                <h3>Gobierno Abierto y Transparencia</h3>
+                <p>Nos comprometemos con la transparencia y la rendición de cuentas. Aquí puedes encontrar:</p>
+                <ul>
+                    <li>Presupuesto público y ejecución presupuestaria</li>
+                    <li>Contratos y licitaciones públicas</li>
+                    <li>Nómina y estructura organizacional</li>
+                    <li>Informes de gestión y resultados</li>
+                    <li>Planes de desarrollo y políticas públicas</li>
+                    <li>Indicadores de desempeño institucional</li>
+                </ul>
+            </section>
+
+            <section id="contacto" class="contact-info">
+                <h3>Información de Contacto</h3>
+                <p><strong>📍 Dirección:</strong> Av. Principal #123, Centro Administrativo</p>
+                <p><strong>📞 Teléfono:</strong> +1 (555) 123-4567</p>
+                <p><strong>📧 Email:</strong> info@administracion.gov</p>
+                <p><strong>🕒 Horarios de Atención:</strong> Lunes a Viernes, 8:00 AM - 5:00 PM</p>
+                <p><strong>🌐 Portal Web:</strong> www.administracion.gov</p>
+            </section>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Educación Virtual. Transformando el futuro del aprendizaje.</p>
+            <p>&copy; 2025 Administración Pública. Todos los derechos reservados.</p>
+            <p>Comprometidos con la transparencia, eficiencia y servicio al ciudadano.</p>
         </div>
     </footer>
+
+    <script>
+        // Navegación suave entre secciones
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efecto de aparición al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animación a las tarjetas de servicio
+        document.querySelectorAll('.service-card, .info-section').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Mostrar fecha actual en el footer
+        const currentYear = new Date().getFullYear();
+        document.querySelector('footer p').innerHTML = `&copy; ${currentYear} Administración Pública. Todos los derechos reservados.`;
+    </script>
 </body>
 </html>
